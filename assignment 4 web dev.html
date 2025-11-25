@@ -1,0 +1,554 @@
+/**
+ * Prompt Quizzer - A Quiz Game
+ * This script runs entirely within the browser console.
+ */
+
+// 1. Quiz Questions Array
+// Create an array of objects to store questions and their correct answers.
+const quizQuestions = [
+    {
+        question: "What spell does Hermoine use to fix Harry's broken glasses?",
+        answer: "Oculus Reparo"
+    },
+    {
+        question: "cold coffee or tea?",
+        answer: "cold coffee all the way"
+    },
+    {
+        question: "DOGS OR CATS?",
+        answer: "Dogs"
+    },
+    {
+        question: "What is the name of the missing boy that the kids search for in Stranger Things Season1?",
+        answer: "Will Byers"
+    },
+    {
+        question: "Chocolate or Icecream?",
+        answer: "Icecream"
+    },
+    {
+        question: "When did srishti come to existence?",
+        answer: "18 January"
+    }
+];
+
+// 2. Function to Run the Quiz
+function runQuiz() {
+    // 3. Score Initialization
+    let score = 0;
+
+    // Optional: Inform the user the quiz is starting
+    alert("Welcome to the Prompt Quizzer! Click OK to start.");
+
+    // 4. Loop Through Questions
+    for (let i = 0; i < quizQuestions.length; i++) {
+        const currentQuestion = quizQuestions[i];
+
+        // 5. Prompt for User Input
+        const userAnswer = prompt(currentQuestion.question);
+
+        // Check if the user cancelled the prompt (userAnswer will be null)
+        if (userAnswer === null) {
+            alert("Quiz cancelled. Your current score is " + score + " out of " + quizQuestions.length + ".");
+            return; // Exit the function if cancelled
+        }
+
+        // 6. Normalize the Input
+        const normalizedUserAnswer = userAnswer.toLowerCase().trim();
+
+        // 7. Check the Answer & Normalize the Correct Answer
+        const normalizedCorrectAnswer = currentQuestion.answer.toLowerCase().trim();
+
+        if (normalizedUserAnswer === normalizedCorrectAnswer) {
+            score++;
+            // 8. Provide Immediate Feedback (Correct)
+            alert("Correct!");
+        } else {
+            // 8. Provide Immediate Feedback (Incorrect)
+            alert("Wrong! The correct answer was: " + currentQuestion.answer);
+        }
+    }
+
+    // 9. Display the Final Score
+    alert("Quiz Over! Your final score is " + score + " out of " + quizQuestions.length + ".");
+}
+
+// 10. Run the Quiz
+runQuiz();
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashionista - Responsive E-commerce Store</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">FASHIONISTA</div>
+            <nav class="main-nav">
+                <a href="#products">Shop</a>
+                <a href="#categories">Categories</a>
+                <a href="#contact">Contact</a>
+                <a href="#about">About</a>
+            </nav>
+            <div class="user-actions">
+                <a href="#" aria-label="Account"><img src="images/user-icon.svg" alt="User Account"></a>
+                <a href="#" aria-label="Cart"><img src="images/cart-icon.svg" alt="Shopping Cart"></a>
+                <button class="sign-up-btn">Sign Up</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" id="hero-banner">
+            <div class="hero-text container">
+                <h1>Summer Sale is Here!</h1>
+                <p>Find your style with new arrivals and up to 50% off sitewide.</p>
+                <a href="#products" class="cta-button">Shop Now</a>
+            </div>
+        </section>
+
+        <div class="content-wrapper container">
+            
+            <aside class="sidebar">
+                <h2>Filters</h2>
+                <form class="filter-form">
+                    <section>
+                        <h3>Category</h3>
+                        <label><input type="checkbox" name="category" value="men"> Men</label>
+                        <label><input type="checkbox" name="category" value="women"> Women</label>
+                        <label><input type="checkbox" name="category" value="accessories"> Accessories</label>
+                    </section>
+                    
+                    <section>
+                        <h3>Price Range</h3>
+                        <input type="range" min="10" max="200" value="10" class="slider" id="price-range">
+                        <p>Max: $<span id="price-value">100</span></p>
+                    </section>
+                    
+                    <button type="submit" class="apply-btn">Apply Filters</button>
+                </form>
+            </aside>
+
+            <section class="product-grid" id="products">
+                <article class="product-card">
+                    <img src="images/p1.jpg" alt="Men's Casual Tee">
+                    <h4>Men's Casual Tee</h4>
+                    <p class="price">$25.00</p>
+                    <button>Add to Cart</button>
+                </article>
+                <article class="product-card">
+                    <img src="images/p2.jpg" alt="Women's Denim Jacket">
+                    <h4>Denim Jacket</h4>
+                    <p class="price">$79.99</p>
+                    <button>Add to Cart</button>
+                </article>
+                <article class="product-card">
+                    <img src="images/p3.jpg" alt="Leather Crossbody Bag">
+                    <h4>Crossbody Bag</h4>
+                    <p class="price">$45.00</p>
+                    <button>Add to Cart</button>
+                </article>
+                <article class="product-card">
+                    <img src="images/p4.jpg" alt="Classic White Sneakers">
+                    <h4>White Sneakers</h4>
+                    <p class="price">$85.50</p>
+                    <button>Add to Cart</button>
+                </article>
+                <article class="product-card">
+                    <img src="images/p5.jpg" alt="Women's Summer Dress">
+                    <h4>Summer Floral Dress</h4>
+                    <p class="price">$55.00</p>
+                    <button>Add to Cart</button>
+                </article>
+                <article class="product-card">
+                    <img src="images/p6.jpg" alt="Men's Slim Fit Chinos">
+                    <h4>Slim Fit Chinos</h4>
+                    <p class="price">$65.00</p>
+                    <button>Add to Cart</button>
+                </article>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <section class="footer-nav">
+                <h4>Customer Service</h4>
+                <ul>
+                    <li><a href="#">Shipping</a></li>
+                    <li><a href="#">Returns</a></li>
+                    <li><a href="#">FAQs</a></li>
+                </ul>
+            </section>
+            <section class="footer-contact">
+                <h4>Contact Us</h4>
+                <p>Email: support@fashionista.com</p>
+                <p>Phone: (555) 123-4567</p>
+            </section>
+            <section class="social-media">
+                <h4>Follow Us</h4>
+                <a href="#" aria-label="Instagram">IG</a> | 
+                <a href="#" aria-label="Twitter">TW</a> | 
+                <a href="#" aria-label="Facebook">FB</a>
+            </section>
+        </div>
+        <div class="copyright">
+            &copy; 2025 Fashionista. All rights reserved.
+        </div>
+    </footer>
+    
+    <script>
+        document.getElementById('price-range').oninput = function() {
+            document.getElementById('price-value').textContent = this.value;
+        };
+    </script>
+</body>
+</html>
+
+/* -------------------------------------- */
+/* 3. Layout & responsiveness setup (CSS Variables & Base) */
+/* -------------------------------------- */
+
+:root {
+    --color-primary: #a34100;      /* Dark Orange/Rust */
+    --color-secondary: #f4f4f4;    /* Light Gray */
+    --color-text: #333;
+    --color-bg-dark: #1f1f1f;
+    --font-family-primary: 'Poppins', sans-serif;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 2rem;
+}
+
+html {
+    font-size: 100%; /* 1rem = 16px */
+}
+
+body {
+    font-family: var(--font-family-primary);
+    color: var(--color-text);
+    margin: 0;
+    line-height: 1.6;
+    background-color: #fff;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+/* Base Styles for Links and Buttons */
+a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color 0.25s ease;
+}
+a:hover {
+    color: #e35a02;
+}
+.cta-button, .apply-btn, .sign-up-btn, .product-card button {
+    background-color: var(--color-primary);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: 600;
+    transition: background-color 0.25s ease, transform 0.25s ease;
+}
+.cta-button:hover, .apply-btn:hover, .sign-up-btn:hover, .product-card button:hover {
+    background-color: #d15610;
+    transform: translateY(-2px);
+}
+
+/* -------------------------------------- */
+/* Header (Flexbox Layout) */
+/* -------------------------------------- */
+
+header {
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: var(--spacing-md) 0;
+    position: sticky; /* Optional: keeps header visible */
+    top: 0;
+    z-index: 100;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+.main-nav a {
+    margin: 0 var(--spacing-md);
+}
+
+.user-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.user-actions img {
+    width: 20px;
+    height: 20px;
+}
+
+/* -------------------------------------- */
+/* Hero Section (Animation) */
+/* -------------------------------------- */
+
+/* Keyframe Animation Definition */
+@keyframes fadeInSlide {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.hero {
+    background: url('images/hero-bg.jpg') center/cover no-repeat; /* Placeholder for image */
+    background-color: var(--color-bg-dark); /* Fallback */
+    height: 40vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    overflow: hidden; /* Important for animation bounds */
+}
+
+.hero-text {
+    /* Apply the animation */
+    animation: fadeInSlide 1s ease-out forwards;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+/* -------------------------------------- */
+/* Main Content Wrapper (Flexbox for Sidebar/Grid) */
+/* -------------------------------------- */
+
+.content-wrapper {
+    display: flex;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-lg) 1rem;
+}
+
+/* -------------------------------------- */
+/* Filter Sidebar */
+/* -------------------------------------- */
+
+.sidebar {
+    flex: 0 0 250px; /* Fixed width sidebar on desktop */
+    padding: var(--spacing-md);
+    border: 1px solid #eee;
+    background-color: #fff;
+    height: fit-content;
+}
+
+.filter-form h3 {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: var(--spacing-sm);
+    margin-top: var(--spacing-lg);
+}
+
+.filter-form label {
+    display: block;
+    margin-bottom: var(--spacing-sm);
+    font-size: 0.95rem;
+}
+
+.apply-btn {
+    width: 100%;
+    margin-top: var(--spacing-lg);
+}
+
+/* -------------------------------------- */
+/* Product Grid (CSS Grid) */
+/* -------------------------------------- */
+
+.product-grid {
+    flex-grow: 1;
+    display: grid;
+    /* Desktop: 3 columns */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: var(--spacing-lg);
+}
+
+.product-card {
+    border: 1px solid #eee;
+    padding: 0;
+    text-align: center;
+    overflow: hidden;
+    background-color: white;
+    transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.product-card:hover {
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px); /* Subtle hover effect */
+}
+
+.product-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.product-card h4 {
+    margin: var(--spacing-md) 0 var(--spacing-sm) 0;
+    font-weight: 600;
+}
+
+.product-card .price {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-md);
+}
+
+.product-card button {
+    width: 100%;
+    padding: 0.75rem 0;
+    border-radius: 0;
+}
+
+/* -------------------------------------- */
+/* Footer */
+/* -------------------------------------- */
+
+footer {
+    background-color: var(--color-bg-dark);
+    color: var(--color-secondary);
+    padding: var(--spacing-lg) 0;
+    margin-top: var(--spacing-lg);
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--spacing-lg);
+    padding-bottom: var(--spacing-lg);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+footer h4 {
+    color: white;
+    margin-bottom: var(--spacing-md);
+}
+
+footer a {
+    color: var(--color-secondary);
+    font-size: 0.9rem;
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.copyright {
+    text-align: center;
+    padding: var(--spacing-md) 0;
+    font-size: 0.8rem;
+    color: #888;
+}
+
+/* -------------------------------------- */
+/* 4. Responsive Design (Media Queries) */
+/* -------------------------------------- */
+
+/* Tablet Breakpoint (<= 1024px) */
+@media screen and (max-width: 1024px) {
+    .product-grid {
+        /* Change from 3 columns to 2 columns */
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+}
+
+/* Mobile Breakpoint (<= 768px) */
+/* Stacked layout for main content and Header items */
+@media screen and (max-width: 768px) {
+    
+    /* Main Content: Stack Sidebar and Grid */
+    .content-wrapper {
+        flex-direction: column; 
+    }
+
+    .sidebar {
+        flex: auto; /* Allow sidebar to take full width */
+        width: auto;
+        border: none;
+    }
+    
+    .product-grid {
+        /* Single column for products */
+        grid-template-columns: 1fr; 
+        gap: var(--spacing-md);
+    }
+
+    /* Header: Stack Navigation */
+    .header-content {
+        flex-direction: column;
+        align-items: stretch;
+        gap: var(--spacing-md);
+    }
+
+    .main-nav {
+        display: flex;
+        flex-wrap: wrap; /* Allow links to wrap */
+        justify-content: space-around;
+        order: 3; /* Move navigation to the bottom of the header */
+    }
+
+    .main-nav a {
+        margin: 0.25rem 0.5rem;
+    }
+    
+    .logo {
+        text-align: center;
+        margin-bottom: var(--spacing-sm);
+    }
+    
+    .user-actions {
+        justify-content: center;
+        order: 2;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* Mobile Small (<= 480px) */
+@media screen and (max-width: 480px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    .main-nav {
+        flex-direction: column;
+        text-align: center;
+    }
+    .main-nav a {
+        padding: 0.25rem 0;
+        border-bottom: 1px solid #eee;
+    }
+}
